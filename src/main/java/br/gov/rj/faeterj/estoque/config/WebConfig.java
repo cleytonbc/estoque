@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -17,6 +18,8 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import br.gov.rj.faeterj.estoque.controller.ProdutosController;
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+
 
 @Configuration
 @ComponentScan(basePackageClasses = { ProdutosController.class })//(2)Define onde encontrar os controllers
@@ -36,6 +39,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		// para serem processadas
 		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
 		resolver.setTemplateEngine(templateEngine());
+		resolver.setCharacterEncoding("UTF-8");
 		return resolver;
 	}
 
@@ -48,6 +52,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		// (5) Responsável por pegar o templateResolver para colocá-lo
 		// em ação, quem implementará a aplicação MVC
 		// Ele irá processar os arquivos HTML
+		engine.addDialect(new LayoutDialect());
 		return engine;
 	}
 
@@ -64,8 +69,13 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		// na transparência 6
 		resolver.setSuffix(".html");
 		resolver.setTemplateMode(TemplateMode.HTML);
-		resolver.setCharacterEncoding("UTF-8");
 		// (4) Definição do modo do template que será usado
 		return resolver;
 	}
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		// Permite adicionar recursos estáticos à aplicação
+		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+	}
+		
 }

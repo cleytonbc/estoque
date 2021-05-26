@@ -1,8 +1,128 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"	
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'">
+<head></head>
 
 <body>
-	<h1>Hello world! Thymeleaf configurado!</h1>
-</body>
+<section layout:fragment="conteudo">
 
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Cadastro de Produto
+			</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+	
+		<div th:each="erro : ${#fields.detailedErrors('${produto.*}')}">
+			<span th:text="${erro.message}"></span>
+		</div>
+
+		<form method="POST" th:object="${produto}" class="form-vertical  js-form-loading">
+			<div class="form-group">
+				<span th:text="${mensagem}"></span>
+			</div>
+			<div class="row">
+				<div class="col-sm-2  form-group">
+					<label for="sku" class="control-label">SKU</label>
+					<input id="sku" type="text" class="form-control" th:field="*{sku}"/>
+				</div>
+			
+				<div class="col-sm-10  form-group">
+					<label for="nome" class="control-label">Nome</label>
+					<input id="nome" type="text" class="form-control" th:field="*{nome}"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="descricao" class="control-label">Descrição</label>
+				<textarea id="descricao" rows="3" class="form-control" th:field="*{descricao}"></textarea>
+			</div>
+			
+
+			<div class="row">
+				<div class="col-sm-3  form-group">
+					<label for="estilo">Estilo</label>
+					<select id="estilo" class="form-control">
+						<option value="">Selecione o estilo</option>
+						<option value="1">Tinto</option>
+						<option value="2">Branco</option>
+						<option value="3">Rosé</option>
+						<option value="3">Espumante</option>
+						<option value="3">Fortificado</option>
+					</select>
+				</div>
+								
+				<div class="col-sm-3  form-group">
+					<label for="sabor">Sabor</label>
+					<select id="sabor" class="form-control">
+						<option value="">Selecione o sabor</option>
+						<option value="1">Doce</option>
+						<option value="2">Suave</option>
+						<option value="3">Seco</option>
+						<option value="4">Semi-Seco</option>
+					</select>
+				</div>
+								
+				<div class="col-sm-3  form-group">
+					<label for="teorAlcoolico">Teor alcoólico</label>
+					<div class="input-group">
+						<input id="teorAlcoolico" type="text" class="form-control  js-decimal"/>
+						<div class="input-group-addon">%</div>
+					</div>
+				</div>
+								
+				<div class="col-lg-3  col-sm-6  form-group">
+					<label for="origem">Origem</label>
+					<div>
+						<div class="radio  radio-inline">
+							<input type="radio" name="origem"> 
+							<label>Nacional</label>
+						</div>
+						<div class="radio  radio-inline">
+							<input type="radio" name="origem"> 
+							<label>Internacional</label>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-3  form-group">
+					<label for="preco">Preço</label>
+					<div class="input-group">
+						<div class="input-group-addon">R$</div>
+						<input id="preco" type="text" class="form-control  js-decimal"/>
+					</div>
+				</div>
+				
+				<div class="col-sm-3  form-group">
+					<label for="comissao">Comissão</label>
+					<div class="input-group">
+						<input id="comissao" type="text" class="form-control  js-decimal"/>
+						<div class="input-group-addon">%</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-3  form-group">
+					<label for="estoque">Estoque</label>
+					<input id="estoque" type="text" class="form-control  js-plain"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<button class="btn  btn-primary" type="submit">Salvar</button>
+			</div>
+		</form>
+	</div>
+</section>
+	
+<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
+<script th:src="@{/layout/javascripts/faetec.min.js}"></script>
+</body>
 </html>

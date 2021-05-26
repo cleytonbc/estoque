@@ -12,7 +12,13 @@
 
 		<java.version>1.8</java.version>
 		<maven-compiler-pluging.version>3.2</maven-compiler-pluging.version>
-				
+		
+		<!-- Flyway -->
+		<flyway-maven-plugin.version>4.0.2</flyway-maven-plugin.version>
+		
+		<!-- MySQL Connector  -->
+  		<mysql-connector-java.version>5.1.39</mysql-connector-java.version>				
+		
 		<!-- Spring MVC -->
 		<spring-framework.version>4.3.0.RELEASE</spring-framework.version>
 		
@@ -21,6 +27,15 @@
 				
 		<!-- Thymeleaf -->
 		<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
+		
+		<!-- Bean-validator / hibernate-validator -->
+		<hibernate-validato.version>5.2.4.Final</hibernate-validato.version>
+		
+		<!-- Thymeleaf - Layout Dialect -->
+		<thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>	
+		
+		<!-- JPA / Hibernate -->
+		<hibernate.version>5.1.0.Final</hibernate.version>
 		
 	</properties>
 	
@@ -34,6 +49,17 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+			
+			<!-- Inicio Flyway -->
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>${flyway-maven-plugin.version}</version>
+				<configuration>
+					<driver>com.mysql.jdbc.Driver</driver>
+				</configuration>
+			</plugin>
+			<!-- Fim Flyway -->
 		</plugins>
 	</build>
 
@@ -75,7 +101,49 @@
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring4</artifactId>
 			<version>${thymeleaf.version}</version>
+		</dependency>
+
+		<!-- Bean-validator / hibernate-validator -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>${hibernate-validato.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		<!-- Thymeleaf - Layout Dialect -->
+		<dependency>
+    		<groupId>nz.net.ultraq.thymeleaf</groupId>
+    		<artifactId>thymeleaf-layout-dialect</artifactId>
+    		<version>${thymeleaf-layout-dialect.version}</version>
 		</dependency>		
 		
+		<!-- JPA / Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Hibernate - Java 8 support -->
+        <dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-java8</artifactId>
+    		<version>${hibernate.version}</version>
+    		<scope>compile</scope>
+		</dependency>	
+		
+		<!-- MySQL Driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-java.version}</version>
+			<!-- <scope>provided</scope>--> 
+			<!-- scope configurado como provide, o driver do
+			MySQL (jar) deve estar na pasta onde está o servidor Tomcat, o driver do
+			MySQL não será empacotado no Projeto -->
+		</dependency>
+				
 	</dependencies> 
 </project>

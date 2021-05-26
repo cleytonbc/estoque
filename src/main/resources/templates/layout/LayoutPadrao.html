@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<title>Estoque</title>
+
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/vendors.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/faetec.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/application.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/faetec.css}"/>	
+
+</head>
+
+<body>
+<div class="aw-layout-page">
+	
+	<div th:replace="layout/fragments/BarraNavegacao :: navbar"></div>
+	
+	<div th:replace="layout/fragments/MenuLateral :: layout-sidebar"></div>
+	
+	<section class="aw-layout-content  js-content" layout:fragment="conteudo"></section>
+	
+	<div th:replace="layout/fragments/Footer :: layout-footer"></div>
+</div>
+<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
+<script th:src="@{/layout/javascripts/faetec.min.js}"></script>
+
+<script th:src="@{/javascripts/vendors/jquery.maskMoney.min.js}"></script>
+
+<script th:src="@{/javascripts/faetec.js}"></script>
+</body>
+</html>
