@@ -37,6 +37,9 @@
 		<!-- JPA / Hibernate -->
 		<hibernate.version>5.1.0.Final</hibernate.version>
 		
+		<!-- Spring Data JPA -->
+		<spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
+		
 	</properties>
 	
 	<build>
@@ -139,10 +142,17 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-connector-java.version}</version>
-			<!-- <scope>provided</scope>--> 
+			<scope>provided</scope>
 			<!-- scope configurado como provide, o driver do
 			MySQL (jar) deve estar na pasta onde está o servidor Tomcat, o driver do
 			MySQL não será empacotado no Projeto -->
+		</dependency>
+		
+		<!-- Spring Data JPA -->
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-jpa</artifactId>
+		    <version>${spring-data-jpa.version}</version>
 		</dependency>
 				
 	</dependencies> 
