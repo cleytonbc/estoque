@@ -46,6 +46,9 @@ public class Produto {
 	@Enumerated(EnumType.STRING)
 	private Origem origem;
 
+	@Enumerated(EnumType.STRING)
+	private Sabor sabor;
+	
 	@ManyToOne
 	@JoinColumn(name = "codigo_estilo")
 	private Estilo estilo;
@@ -128,6 +131,16 @@ public class Produto {
 
 	public void setEstilo(Estilo estilo) {
 		this.estilo = estilo;
+	}
+	
+	
+
+	public Sabor getSabor() {
+		return sabor;
+	}
+
+	public void setSabor(Sabor sabor) {
+		this.sabor = sabor;
 	}
 
 	@Override

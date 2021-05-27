@@ -49,22 +49,17 @@
 					<label for="estilo">Estilo</label>
 					<select id="estilo" class="form-control">
 						<option value="">Selecione o estilo</option>
-						<option value="1">Tinto</option>
-						<option value="2">Branco</option>
-						<option value="3">Rosé</option>
-						<option value="3">Espumante</option>
-						<option value="3">Fortificado</option>
+						<option th:each="estilo : ${estilos}" th:value="${estilo.codigo}" 
+						        th:text="${estilo.nome}">Tinto</option>
 					</select>
 				</div>
 								
 				<div class="col-sm-3  form-group">
 					<label for="sabor">Sabor</label>
 					<select id="sabor" class="form-control">
-						<option value="">Selecione o sabor</option>
-						<option value="1">Doce</option>
-						<option value="2">Suave</option>
-						<option value="3">Seco</option>
-						<option value="4">Semi-Seco</option>
+						<option value="">Selecione o estilo</option>
+						<option th:each="sabor : ${sabores}" th:value="${sabores}" 
+						        th:text="${sabor.descricao}">Doce</option>
 					</select>
 				</div>
 								
@@ -79,14 +74,14 @@
 				<div class="col-lg-3  col-sm-6  form-group">
 					<label for="origem">Origem</label>
 					<div>
-						<div class="radio  radio-inline">
-							<input type="radio" name="origem"> 
-							<label>Nacional</label>
-						</div>
-						<div class="radio  radio-inline">
-							<input type="radio" name="origem"> 
-							<label>Internacional</label>
-						</div>
+						<th:block th:each="origem : ${origens}">
+							<div class="radio  radio-inline">
+								<input th:id="|id_${origem}|" type="radio" 
+								       th:value="${origem}" th:field="*{origem}"> 
+								<label th:for="|id_${origem}|" 
+								       th:text="${origem.descricao}">Nacional</label>
+							</div>
+						</th:block>
 					</div>
 				</div>
 				
