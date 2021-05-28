@@ -31,7 +31,8 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 
 @Configuration
-@ComponentScan(basePackageClasses = { ProdutosController.class })//(2)Define onde encontrar os controllers
+//@ComponentScan(basePackageClasses = { ProdutosController.class })//(2)Define onde encontrar os controllers
+@ComponentScan(basePackages = "br.gov.rj.faeterj.estoque.controller")
 @EnableWebMvc // (1) Habilita aplicação como do tipo MVC 
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
