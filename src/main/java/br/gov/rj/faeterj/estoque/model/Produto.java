@@ -33,7 +33,6 @@ public class Produto {
 	@Size(min = 1, max = 50, message = "O tamanho da descrição deve estar entre 1 e 50")
 	private String descricao;
 	
-	@NotBlank(message = "Valor é obrigatório")
 	private BigDecimal valor;
 	
 	@Column(name = "teor_alcoolico")
@@ -52,7 +51,6 @@ public class Produto {
 
 	@ManyToOne
 	@JoinColumn(name = "codigo_estilo")
-	@NotBlank(message = "Estilo é obrigatório")
 	private Estilo estilo;
 	
 	public String getSku() {

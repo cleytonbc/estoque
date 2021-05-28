@@ -13,12 +13,17 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import br.gov.rj.faeterj.estoque.model.Produto;
 import br.gov.rj.faeterj.estoque.repository.Produtos;
 
 @Configuration
-@EnableJpaRepositories(basePackageClasses = Produtos.class)
+//Desabilitamos nos repositórios do JPA a transação default
+@EnableJpaRepositories(basePackageClasses = Produtos.class, enableDefaultTransactions = false)
+//Com a anotação abaixo, a aplicação passa a gerenciar a transação no banco de dados. 
+//A declaração na classe CadastroProdutoService da anotação @Transactional é necessária
+@EnableTransactionManagement 
 public class JPAConfig {
 
 	@Bean

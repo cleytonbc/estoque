@@ -18,14 +18,10 @@
 
 	<div class="container-fluid">
 	
-		<div th:each="erro : ${#fields.detailedErrors('${produto.*}')}">
-			<span th:text="${erro.message}"></span>
-		</div>
-
+		<th:block th:include="fragments/MensagemSucesso"></th:block>
+		
 		<form method="POST" th:object="${produto}" class="form-vertical  js-form-loading">
-			<div class="form-group">
-				<span th:text="${mensagem}"></span>
-			</div>
+			<th:block th:include="fragments/MensagensErroValidacao"></th:block>
 			<div class="row">
 				<div class="col-sm-2  form-group">
 					<label for="sku" class="control-label">SKU</label>
