@@ -37,7 +37,7 @@ public class EstilosController {
 			result.rejectValue("nome", e.getMessage(), e.getMessage());
 			return novo(estilo);
 		}
-		cadastroEstiloService.salvar(estilo);
+		
 		attributes.addFlashAttribute("mensagem", "Estilo salvo com sucesso");
 		return new ModelAndView("redirect:/estilos/novo");
 	}
