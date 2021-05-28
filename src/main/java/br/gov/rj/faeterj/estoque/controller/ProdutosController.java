@@ -15,13 +15,16 @@ import br.gov.rj.faeterj.estoque.model.Origem;
 import br.gov.rj.faeterj.estoque.model.Produto;
 import br.gov.rj.faeterj.estoque.model.Sabor;
 import br.gov.rj.faeterj.estoque.repository.Estilos;
+import br.gov.rj.faeterj.estoque.service.CadastroProdutoService;
 
 @Controller
 public class ProdutosController {
 
 	@Autowired
-//	private Produtos produtos;
 	private Estilos estilos;
+	
+	@Autowired
+	private CadastroProdutoService cadastroProdutoService;
 		
 	@RequestMapping("/produtos/novo")
 	public ModelAndView novo(Produto produto) {
@@ -53,6 +56,7 @@ public class ProdutosController {
 		   System.out.println(">>> Estilo: " + produto.getEstilo().getCodigo());
 		
 		// Salvar no banco de dados...
+		cadastroProdutoService.salvar(produto);
 		attributes.addFlashAttribute("mensagem", "Produto salvo com sucesso!");
 		return new ModelAndView("redirect:/produtos/novo");
 	}
