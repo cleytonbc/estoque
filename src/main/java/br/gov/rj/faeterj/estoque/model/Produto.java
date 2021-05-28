@@ -42,25 +42,17 @@ public class Produto {
 
 	@Column(name = "quantidade_estoque")
 	private Integer quantidadeEstoque;
-	
+
 	@Enumerated(EnumType.STRING)
 	private Origem origem;
 
 	@Enumerated(EnumType.STRING)
 	private Sabor sabor;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "codigo_estilo")
 	private Estilo estilo;
-
-	public Long getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
-	}
-
+	
 	public String getSku() {
 		return sku;
 	}
@@ -83,6 +75,14 @@ public class Produto {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
 
 	public BigDecimal getValor() {
@@ -125,22 +125,20 @@ public class Produto {
 		this.origem = origem;
 	}
 
-	public Estilo getEstilo() {
-		return estilo;
-	}
-
-	public void setEstilo(Estilo estilo) {
-		this.estilo = estilo;
-	}
-	
-	
-
 	public Sabor getSabor() {
 		return sabor;
 	}
 
 	public void setSabor(Sabor sabor) {
 		this.sabor = sabor;
+	}
+
+	public Estilo getEstilo() {
+		return estilo;
+	}
+
+	public void setEstilo(Estilo estilo) {
+		this.estilo = estilo;
 	}
 
 	@Override
@@ -168,5 +166,4 @@ public class Produto {
 		return true;
 	}
 	
-
 }

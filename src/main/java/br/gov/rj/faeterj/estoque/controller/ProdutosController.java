@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.gov.rj.faeterj.estoque.model.Estilo;
 import br.gov.rj.faeterj.estoque.model.Origem;
 import br.gov.rj.faeterj.estoque.model.Produto;
 import br.gov.rj.faeterj.estoque.model.Sabor;
