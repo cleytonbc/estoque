@@ -1,0 +1,26 @@
+/*
+######################
+# UTILIDADES
+######################
+*/
+.bw-glyphicon-large {
+	font-size: 18px; /* Tamanho da fonte do ícone referente a classe bw-glyphicon-large*/
+}
+
+
+/*
+######################
+# COMPONENTES
+######################
+*/
+
+/* Field Action */
+.bw-field-action {
+	/* Definimos o tipo de display flex, que serve para sinalizarmos que estamos */ 
+	/* utilizando flexbox. */
+	display: flex;
+}
+
+.bw-field-action__icon {
+	margin: 6px 0 0 5px;
+}

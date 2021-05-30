@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/vendors.min.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/faetec.min.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/application.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/faetec.css}"/>	
+	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/faetec.css}"/>	
 
 </head>
 
@@ -32,6 +32,8 @@
 
 <script th:src="@{/layout/javascripts/jquery.maskMoney.min.js}"></script>
 
-<script th:src="@{/layout/javascripts/faetec.js}"></script>
+<script th:src="@{/javascripts/faetec.js}"></script>
+
+<th:block layout:fragment="javascript-extra"></th:block>
 </body>
 </html>

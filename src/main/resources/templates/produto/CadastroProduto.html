@@ -18,10 +18,11 @@
 
 	<div class="container-fluid">
 	
-		<th:block th:include="fragments/MensagemSucesso"></th:block>
-		
+		<th:block th:include="/fragments/MensagemSucesso :: layout-msg-sucess "></th:block>
+	
 		<form method="POST" th:object="${produto}" class="form-vertical  js-form-loading">
-			<th:block th:include="fragments/MensagensErroValidacao"></th:block>
+			<th:block th:include="/fragments/MensagensErroValidacao  :: layout-msg-error "></th:block>
+			
 			<div class="row">
 				<div class="col-sm-2  form-group" 
 				     th:classappend="${#fields.hasErrors('sku')} ? has-error">
@@ -43,16 +44,25 @@
 			</div>			
 
 			<div class="row">
-				<div class="col-sm-3  form-group"
-				     th:classappend="${#fields.hasErrors('estilo')} ? has-error">
+				<div class="col-sm-3  form-group" 
+				th:classappend="${#fields.hasErrors('estilo')} ? has-error">
 					<label for="estilo" class="control-label">Estilo</label>
-					<select id="estilo" class="form-control" th:field="*{estilo}">
-						<option value="">Selecione o estilo</option>
-						<option th:each="estilo : ${estilos}" th:value="${estilo.codigo}" 
-						        th:text="${estilo.nome}">Tinto</option>
-					</select>
+					<div class="bw-field-action">
+						<select id="estilo" class="form-control" th:field="*{estilo}">
+							<option value="">Selecione o estilo</option>
+							<option th:each="estilo : ${estilos}" th:value="${estilo.codigo}" 
+							th:text="${estilo.nome}">Pale lager</option>
+						</select>
+						
+						<div class="bw-field-action__icon">
+							<a href="#" data-toggle="modal" 
+							data-target="#modalCadastroRapidoEstilo">
+								<i class="glyphicon  glyphicon-plus-sign  bw-glyphicon-large"></i>
+							</a>
+						</div>
+					</div>
 				</div>
-								
+				
 				<div class="col-sm-3  form-group"
 				     th:classappend="${#fields.hasErrors('sabor')} ? has-error">
 					<label for="sabor" class="control-label">Sabor</label>
@@ -124,10 +134,13 @@
 			</div>
 		</form>
 	</div>
-	
+
+	<div th:replace="estilo/CadastroRapidoEstilo :: modal"></div>	
 </section>
 	
-<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
-<script th:src="@{/layout/javascripts/faetec.min.js}"></script>
-</body>
+
+<th:block layout:fragment="javascript-extra">
+	<script th:src="@{/javascripts/estilo.cadastro-rapido.js}"></script>
+</th:block>
+	
 </html>
